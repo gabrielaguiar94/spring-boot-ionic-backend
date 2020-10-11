@@ -5,14 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gabrielaguiar.cursomc.domain.Categoria;
-import com.gabrielaguiar.cursomc.repositories.CategoriaRepository;
+import com.gabrielaguiar.cursomc.domain.Category;
+import com.gabrielaguiar.cursomc.repositories.CategoryRepository;
 
 @Service
-public class CategoriaService {
+public class CategoryService {
 
 	@Autowired
-	private CategoriaRepository repo;
+	private CategoryRepository repo;
 
 	// Essa chamada estava sendo usada abaixo do Java 8
 //	public Categoria buscar(Integer id) {
@@ -20,8 +20,8 @@ public class CategoriaService {
 //		return obj;
 //	}
 	
-	public Categoria buscar(Integer id) {
-		Optional<Categoria> obj = repo.findById(id);
+	public Category buscar(Integer id) {
+		Optional<Category> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
 

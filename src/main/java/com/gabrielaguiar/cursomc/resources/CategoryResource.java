@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gabrielaguiar.cursomc.domain.Categoria;
-import com.gabrielaguiar.cursomc.services.CategoriaService;
+import com.gabrielaguiar.cursomc.domain.Category;
+import com.gabrielaguiar.cursomc.services.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categorias")
-public class CategoriaResource {
+public class CategoryResource {
 
 	@Autowired
-	private CategoriaService service;
+	private CategoryService service;
 	
 	
 	@RequestMapping(value="{id}" , method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) { // recebendo o id vindo da url
 
-		Categoria obj = service.buscar(id);
+		Category obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj); //ira retornar objetos http
 		
 //		Categoria cat1 = new Categoria(1, "Informática");
