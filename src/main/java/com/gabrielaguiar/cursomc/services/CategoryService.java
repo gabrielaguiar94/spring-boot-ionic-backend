@@ -20,9 +20,10 @@ public class CategoryService {
 //		return obj;
 //	}
 	
-	public Category buscar(Integer id) {
-		Optional<Category> obj = repo.findById(id);
-		return obj.orElse(null);
+	public Category find(Integer id){
+		Optional<Category> obj = repo.findById(id);		
+		return obj.orElseThrow(() -> new com.gabrielaguiar.cursomc.services.exceptions.ObjectNotFoundException(
+				"Object not found! Id: " + id + ", Type: " + Category.class.getName()));
 	}
 
 }

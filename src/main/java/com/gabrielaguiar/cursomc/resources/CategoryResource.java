@@ -11,7 +11,7 @@ import com.gabrielaguiar.cursomc.domain.Category;
 import com.gabrielaguiar.cursomc.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value = "/categories")
 public class CategoryResource {
 
 	@Autowired
@@ -19,19 +19,11 @@ public class CategoryResource {
 	
 	
 	@RequestMapping(value="{id}" , method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) { // recebendo o id vindo da url
+	public ResponseEntity<?> find(@PathVariable Integer id){ // recebendo o id vindo da url
 
-		Category obj = service.buscar(id);
-		return ResponseEntity.ok().body(obj); //ira retornar objetos http
-		
-//		Categoria cat1 = new Categoria(1, "Informática");
-//		Categoria cat2 = new Categoria(2, "Escritório");
-//
-//		List<Categoria> lista = new ArrayList<>();
-//		lista.add(cat1);
-//		lista.add(cat2);
-//
-//		return lista;
+		Category obj = service.find(id);
+		return ResponseEntity.ok().body(obj); //ira retornar objetos http	
+
 
 	}
 
