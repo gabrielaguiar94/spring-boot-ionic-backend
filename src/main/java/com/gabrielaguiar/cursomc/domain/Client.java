@@ -6,10 +6,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.gabrielaguiar.cursomc.domain.enums.TypeClient;
 
@@ -25,8 +28,11 @@ public class Client implements Serializable {
 	private String cpfOrCnpj;
 	private Integer type;
 
+	@OneToMany(mappedBy = "client")
 	private List<Address> adresses = new ArrayList<>();
 
+	@ElementCollection
+	@CollectionTable(name = "PHONES")
 	private Set<String> phones = new HashSet<>();
 
 	public Client() {
