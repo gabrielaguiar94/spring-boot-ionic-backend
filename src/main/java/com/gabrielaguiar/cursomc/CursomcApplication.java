@@ -41,7 +41,7 @@ public class CursomcApplication implements CommandLineRunner {
 		Category cat1 = new Category(null, "Informática");
 		Category cat2 = new Category(null, "Escritório");
 		
-		Product p1 = new Product(null, "Computer", 2.000);
+		Product p1 = new Product(null, "Computer", 2000.00);
 		Product p2 = new Product(null, "Printer", 800.00);
 		Product p3 = new Product(null, "Mouse", 80.00);
 		
