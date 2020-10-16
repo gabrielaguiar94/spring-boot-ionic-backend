@@ -3,10 +3,12 @@ package com.gabrielaguiar.cursomc.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.gabrielaguiar.cursomc.domain.Category;
 import com.gabrielaguiar.cursomc.repositories.CategoryRepository;
+import com.gabrielaguiar.cursomc.services.exceptions.DataIntegrityException;
 
 @Service
 public class CategoryService {
@@ -27,6 +29,15 @@ public class CategoryService {
 	public Category update(Category obj) {
 		find(obj.getId());
 		return repo.save(obj);
+	}
+
+	public void delete(Integer id) {
+		find(id);
+		try {
+		repo.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("You cannot delete a category that has products");
+		}
 	}
 
 }

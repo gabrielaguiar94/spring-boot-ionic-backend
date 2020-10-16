@@ -16,14 +16,12 @@ public class OrderResource {
 
 	@Autowired
 	private OrderService service;
-	
-	
-	@RequestMapping(value="{id}" , method=RequestMethod.GET)
-	public ResponseEntity<Order> find(@PathVariable Integer id){ // recebendo o id vindo da url
+
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public ResponseEntity<Order> find(@PathVariable Integer id) {
 
 		Order obj = service.find(id);
-		return ResponseEntity.ok().body(obj); //ira retornar objetos http	
-
+		return ResponseEntity.ok().body(obj);
 
 	}
 

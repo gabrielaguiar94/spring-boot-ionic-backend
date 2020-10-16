@@ -16,14 +16,12 @@ public class ClientResource {
 
 	@Autowired
 	private ClientService service;
-	
-	
-	@RequestMapping(value="{id}" , method=RequestMethod.GET)
-	public ResponseEntity<Client> find(@PathVariable Integer id){ // recebendo o id vindo da url
+
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public ResponseEntity<Client> find(@PathVariable Integer id) {
 
 		Client obj = service.find(id);
-		return ResponseEntity.ok().body(obj); //ira retornar objetos http	
-
+		return ResponseEntity.ok().body(obj);
 
 	}
 
