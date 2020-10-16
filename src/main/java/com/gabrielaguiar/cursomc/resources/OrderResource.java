@@ -19,7 +19,7 @@ public class OrderResource {
 	
 	
 	@RequestMapping(value="{id}" , method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id){ // recebendo o id vindo da url
+	public ResponseEntity<Order> find(@PathVariable Integer id){ // recebendo o id vindo da url
 
 		Order obj = service.find(id);
 		return ResponseEntity.ok().body(obj); //ira retornar objetos http	

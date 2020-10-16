@@ -19,7 +19,7 @@ public class ClientResource {
 	
 	
 	@RequestMapping(value="{id}" , method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id){ // recebendo o id vindo da url
+	public ResponseEntity<Client> find(@PathVariable Integer id){ // recebendo o id vindo da url
 
 		Client obj = service.find(id);
 		return ResponseEntity.ok().body(obj); //ira retornar objetos http	
