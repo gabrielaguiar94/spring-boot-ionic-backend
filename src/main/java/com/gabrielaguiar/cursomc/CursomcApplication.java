@@ -70,6 +70,11 @@ public class CursomcApplication implements CommandLineRunner {
 
 		Category cat1 = new Category(null, "Informática");
 		Category cat2 = new Category(null, "Escritório");
+		Category cat3 = new Category(null, "Bed, table, bath");
+		Category cat4 = new Category(null, "Electronics");
+		Category cat5 = new Category(null, "Garden");
+		Category cat6 = new Category(null, "Decoration");
+		Category cat7 = new Category(null, "Perfumery");
 
 		Product p1 = new Product(null, "Computer", 2000.00);
 		Product p2 = new Product(null, "Printer", 800.00);
@@ -82,7 +87,7 @@ public class CursomcApplication implements CommandLineRunner {
 		p2.getCategory().addAll(Arrays.asList(cat1, cat2));
 		p3.getCategory().addAll(Arrays.asList(cat1));
 
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		productRepository.saveAll(Arrays.asList(p1, p2, p3));
 
 		State st1 = new State(null, "Minas Gerais");
@@ -123,7 +128,7 @@ public class CursomcApplication implements CommandLineRunner {
 
 		cli1.getOrders().addAll(Arrays.asList(ord1, ord2));
 
-		orderRepository.saveAll(Arrays.asList(ord1, ord2));		
+		orderRepository.saveAll(Arrays.asList(ord1, ord2));
 		paymentRepository.saveAll(Arrays.asList(pay1, pay2));
 
 		OrderItem oi1 = new OrderItem(ord1, p1, 0.00, 1, 2000.00);
