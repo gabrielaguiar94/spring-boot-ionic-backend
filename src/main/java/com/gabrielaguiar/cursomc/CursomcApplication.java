@@ -13,6 +13,7 @@ import com.gabrielaguiar.cursomc.domain.Category;
 import com.gabrielaguiar.cursomc.domain.City;
 import com.gabrielaguiar.cursomc.domain.Client;
 import com.gabrielaguiar.cursomc.domain.Order;
+import com.gabrielaguiar.cursomc.domain.OrderItem;
 import com.gabrielaguiar.cursomc.domain.Payment;
 import com.gabrielaguiar.cursomc.domain.PaymentWithBill;
 import com.gabrielaguiar.cursomc.domain.PaymentWithCard;
@@ -24,6 +25,7 @@ import com.gabrielaguiar.cursomc.repositories.AddressRepository;
 import com.gabrielaguiar.cursomc.repositories.CategoryRepository;
 import com.gabrielaguiar.cursomc.repositories.CityRepository;
 import com.gabrielaguiar.cursomc.repositories.ClientRepository;
+import com.gabrielaguiar.cursomc.repositories.OrderItemRepository;
 import com.gabrielaguiar.cursomc.repositories.OrderRepository;
 import com.gabrielaguiar.cursomc.repositories.PaymentRepository;
 import com.gabrielaguiar.cursomc.repositories.ProductRepository;
@@ -55,6 +57,9 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Autowired
 	private PaymentRepository paymentRepository;
+
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -118,8 +123,21 @@ public class CursomcApplication implements CommandLineRunner {
 
 		cli1.getOrders().addAll(Arrays.asList(ord1, ord2));
 
-		orderRepository.saveAll(Arrays.asList(ord1, ord2));
+		orderRepository.saveAll(Arrays.asList(ord1, ord2));		
 		paymentRepository.saveAll(Arrays.asList(pay1, pay2));
+
+		OrderItem oi1 = new OrderItem(ord1, p1, 0.00, 1, 2000.00);
+		OrderItem oi2 = new OrderItem(ord1, p3, 0.00, 2, 80.00);
+		OrderItem oi3 = new OrderItem(ord2, p2, 100.0, 1, 800.00);
+
+		ord1.getItems().addAll(Arrays.asList(oi1, oi2));
+		ord2.getItems().addAll(Arrays.asList(oi3));
+
+		p1.getItems().addAll(Arrays.asList(oi1));
+		p2.getItems().addAll(Arrays.asList(oi2));
+		p3.getItems().addAll(Arrays.asList(oi3));
+
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3));
 
 	}
 
